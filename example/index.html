@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f2eb" />
+    <meta
+      name="description"
+      content="An interactive playground for ios-scroll: rubber banding, momentum and interruptible springs in a tiny TypeScript library."
+    />
+    <title>ios-scroll — A little more feeling.</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23e4512c'/%3E%3Cpath d='M20 22h24M20 32h24M20 42h24' stroke='%23fff' stroke-width='4'/%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <a class="wordmark" href="#" aria-label="ios-scroll home"
+          ><span class="brand-mark" aria-hidden="true"
+            ><i></i><i></i><i></i></span
+          >ios-scroll<span class="version">v0.1.0</span></a
+        >
+        <nav aria-label="Main navigation">
+          <a href="#integration"
+            >Quick start <span aria-hidden="true">↗</span></a
+          ><a
+            href="https://blog.justinbuilds.mov/ios/"
+            target="_blank"
+            rel="noreferrer"
+            >The research <span aria-hidden="true">↗</span></a
+          >
+        </nav>
+      </header>
+      <main>
+        <section class="intro" aria-labelledby="title">
+          <p class="eyebrow"><span></span> NATIVE FEEL. OPEN WEB.</p>
+          <h1 id="title">A little more<br /><em>feeling.</em></h1>
+          <div class="intro-aside">
+            <p>
+              The stretch. The glide. The gentle return.<br />Bring the feel of
+              iOS scrolling to your web app.
+            </p>
+            <p class="fine-print">
+              TypeScript · Zero dependencies · Any framework
+            </p>
+          </div>
+        </section>
+        <section class="lab" aria-labelledby="lab-title">
+          <div class="lab-top">
+            <h2 id="lab-title">
+              <span class="number">01 /</span> The scroll lab
+            </h2>
+            <p>Go on. Pull past the edge.</p>
+            <span class="live"><i></i> INTERACTIVE</span>
+          </div>
+          <div class="lab-body">
+            <div class="demo-area">
+              <div class="demo-caption">
+                <span>FIELD NOTES</span
+                ><span>12 ENTRIES <span aria-hidden="true">↓</span></span>
+              </div>
+              <div
+                class="viewport"
+                id="demo-scroll"
+                role="region"
+                aria-label="Draggable field notes. Drag, scroll, or use arrow keys."
+              >
+                <div class="scroll-content" id="demo-content">
+                  <div class="list-heading">
+                    <span class="mini-label">A COLLECTION OF SMALL THINGS</span>
+                    <h3>Worth slowing<br />down for.</h3>
+                    <p>Drag the list. Let it go. Catch it again.</p>
+                  </div>
+                  <ol class="notes" id="notes"></ol>
+                  <div class="list-end">
+                    <span aria-hidden="true">✳</span>
+                    <p>
+                      You’ve reached the end.<br />There’s a little give here,
+                      too.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="demo-bottom">
+                <span class="drag-icon" aria-hidden="true">↕</span> Drag,
+                flick, or use your scroll wheel<button id="reset" type="button">
+                  Back to top <span aria-hidden="true">↑</span>
+                </button>
+              </div>
+            </div>
+            <aside class="controls" aria-label="Scroll settings">
+              <div class="control-heading">
+                <span class="mini-label">MAKE IT YOURS</span
+                ><button
+                  id="restore"
+                  type="button"
+                  aria-label="Restore default settings"
+                >
+                  Reset <span aria-hidden="true">↺</span>
+                </button>
+              </div>
+              <fieldset>
+                <legend>Rebound character</legend>
+                <div class="segmented" id="spring-control">
+                  <button
+                    type="button"
+                    data-spring="smooth"
+                    aria-pressed="true"
+                  >
+                    Smooth</button
+                  ><button
+                    type="button"
+                    data-spring="snappy"
+                    aria-pressed="false"
+                  >
+                    Snappy</button
+                  ><button
+                    type="button"
+                    data-spring="bouncy"
+                    aria-pressed="false"
+                  >
+                    Bouncy
+                  </button>
+                </div>
+                <p class="setting-hint" id="spring-hint">
+                  A soft landing. No overshoot.
+                </p>
+              </fieldset>
+              <div class="response-control">
+                <div class="response-label">
+                  <label for="rebound-response">Rebound response</label
+                  ><output id="rebound-value" for="rebound-response"
+                    >400 ms</output
+                  >
+                </div>
+                <input
+                  id="rebound-response"
+                  type="range"
+                  min="100"
+                  max="600"
+                  step="10"
+                  value="400"
+                  aria-describedby="rebound-hint"
+                />
+                <p class="setting-hint" id="rebound-hint">
+                  Lower is faster. Tunes the return at both edges.
+                </p>
+              </div>
+              <div class="coefficient">
+                <label for="input-type">Rubber-band input</label
+                ><select id="input-type">
+                  <option value="touch">Touch · 0.55</option>
+                  <option value="smallTrackpad">Small trackpad · 0.715</option>
+                  <option value="largeTrackpad">Large trackpad · 0.17</option>
+                  <option value="continuousMouse">
+                    Continuous mouse · 0.4
+                  </option>
+                  <option value="highResolutionWheel">
+                    Hi-res wheel · 0.17
+                  </option>
+                  <option value="lowResolutionWheel">Lo-res wheel · 0.5</option>
+                  <option value="mac">Mac Catalyst · 0.075</option>
+                </select>
+                <p class="setting-hint">
+                  Resistance increases as you pull further.
+                </p>
+              </div>
+              <label class="toggle-label" for="bounce"
+                >Edge bounce<input type="checkbox" id="bounce" checked /><span
+                  class="toggle"
+                  aria-hidden="true"
+                ></span
+              ></label>
+              <label class="toggle-label" for="reduce"
+                >Reduce motion<input type="checkbox" id="reduce" /><span
+                  class="toggle"
+                  aria-hidden="true"
+                ></span
+              ></label>
+              <div class="telemetry">
+                <div class="telemetry-title">
+                  <span class="mini-label">MOTION, IN REAL TIME</span
+                  ><span id="phase" class="phase">Idle</span>
+                </div>
+                <svg
+                  class="trace"
+                  viewBox="0 0 300 80"
+                  aria-label="Recent scroll velocity"
+                  role="img"
+                >
+                  <path class="gridline" d="M0 40H300M0 10H300M0 70H300" />
+                  <path id="velocity-path" d="M0 40H300" />
+                </svg>
+                <div class="readouts">
+                  <div>
+                    <span>POSITION</span><output id="position">0</output
+                    ><small>px</small>
+                  </div>
+                  <div>
+                    <span>VELOCITY</span><output id="velocity">0</output
+                    ><small>px/s</small>
+                  </div>
+                  <div>
+                    <span>STRETCH</span><output id="stretch">0</output
+                    ><small>px</small>
+                  </div>
+                </div>
+              </div>
+              <p class="lab-note">
+                Built from the math behind the motion.<br /><a href="#math"
+                  >See how it works <span aria-hidden="true">↘</span></a
+                >
+              </p>
+            </aside>
+          </div>
+        </section>
+        <section
+          class="integration"
+          id="integration"
+          aria-labelledby="integration-title"
+        >
+          <div class="integration-copy">
+            <p class="eyebrow">02 / DROP IT IN</p>
+            <h2 id="integration-title">
+              Your markup.<br />A new kind of motion.
+            </h2>
+            <p>
+              One wrapper, one function call. No stylesheet, framework, or
+              runtime dependency required.
+            </p>
+            <div class="install">
+              <code>npm install ./ios-scroll-0.1.0.tgz</code
+              ><button
+                type="button"
+                id="copy-install"
+                aria-label="Copy install command"
+              >
+                Copy <span aria-hidden="true">⧉</span>
+              </button>
+            </div>
+            <small
+              >Run <code>npm pack</code> in this repo to create the
+              package.</small
+            >
+          </div>
+          <div class="code-panel">
+            <div class="code-bar">
+              <span>GET STARTED / TYPESCRIPT</span
+              ><button type="button" id="copy-code">
+                Copy code <span aria-hidden="true">⧉</span>
+              </button>
+            </div>
+            <pre><code id="integration-code"></code></pre>
+            <div class="code-footer">
+              <span class="code-dot"></span> React, Vue, Svelte, or just you and
+              the DOM.
+            </div>
+          </div>
+        </section>
+        <section class="math" id="math" aria-labelledby="math-title">
+          <div>
+            <p class="eyebrow">03 / UNDER THE SURFACE</p>
+            <h2 id="math-title">Feeling, with a formula.</h2>
+            <p>
+              The rubber-band curve and spring presets follow Justin’s research.
+              Exponential momentum completes the interaction; it’s an
+              approximation of native scrolling.
+            </p>
+          </div>
+          <div class="formula">
+            <span class="mini-label">THE RUBBER BAND</span>
+            <p>c · x · d <span>/</span> (d + c · x)</p>
+            <div>
+              <span><b>x</b> distance past edge</span
+              ><span><b>d</b> viewport size</span
+              ><span><b>c</b> resistance</span>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <a class="footer-brand" href="#">ios-scroll</a
+        ><span>Made for a web that feels good.</span
+        ><a
+          href="https://blog.justinbuilds.mov/ios/"
+          target="_blank"
+          rel="noreferrer"
+          >Based on research by Justin <span aria-hidden="true">↗</span></a
+        >
+      </footer>
+    </div>
+    <script type="module" src="/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ios-scroll — Browser checks</title>
+    <style>
+      body {
+        font:
+          14px/1.6 ui-monospace,
+          monospace;
+        padding: 24px;
+        max-width: 900px;
+        margin: auto;
+        background: #f4f2eb;
+        color: #272b25;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      li {
+        margin: 8px 0;
+      }
+      .pass {
+        color: #305b2f;
+      }
+      .fail {
+        color: #a12616;
+      }
+      #fixtures {
+        position: fixed;
+        left: -10000px;
+        top: 0;
+      }
+      a {
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="./">← Back to the demo</a>
+    <h1>Browser integration checks</h1>
+    <p id="result" role="status">Running…</p>
+    <ol id="results"></ol>
+    <div id="fixtures"></div>
+    <script type="module" src="./checks.ts"></script>
+  </body>
+</html>
