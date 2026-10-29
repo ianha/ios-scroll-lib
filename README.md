@@ -2,6 +2,8 @@
 
 iOS-style rubber banding, momentum and interruptible springs for the web. A dependency-free TypeScript library with a framework-independent DOM adapter and a pure physics core.
 
+![Live demo of ios-scroll: pulling past the top, flicking through the list, and rubber-band recoil at both edges](docs/scroll-demo.gif)
+
 ```ts
 import { createIOSScroll } from "ios-scroll";
 
